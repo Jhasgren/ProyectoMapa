@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ProyectoMapa</string>
+    <string name="title_activity_mapa">Mapa</string>
+    <string name="facebook_app_id">1463345370348331</string>
+    <string name="title_activity_login">ProyectoMapa</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Clave</string>
+    <string name="action_sign_in">Autentificarse</string>
+    <string name="action_sign_in_short">Autentificarse</string>
+    <string name="error_invalid_email">Email no valido</string>
+    <string name="error_invalid_password">Clave muy corta</string>
+    <string name="error_incorrect_password">Clave incorrecta</string>
+    <string name="error_field_required">Este campo es obligatorio</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>
