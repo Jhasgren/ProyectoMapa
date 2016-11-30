@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -79,15 +80,21 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                                     ubicacion.latitude + "," + ubicacion.longitude +
                                     "&radius=5000&types=food&key=AIzaSyCEZvyJVUQZoaDs4keQDTMg8AR3YZoqCgk") {
                                 @Override
-                                public void onRespuesta(ArrayList<Ubicaciones> ubicaciones) {
+                                public void onRespuesta(final ArrayList<Ubicaciones> ubicaciones) {
                                     super.onRespuesta(ubicaciones);
-                                    if (ubicaciones != null) {
-                                        for (Ubicaciones u : ubicaciones) {
-                                            mMap.addMarker(new MarkerOptions().position(u.getPos()).title(u.getNombre()));
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (ubicaciones != null) {
+                                                for (Ubicaciones u : ubicaciones) {
+                                                    Log.e("ubicacion", u.getNombre());
+                                                    mMap.addMarker(new MarkerOptions().position(u.getPos()).title(u.getNombre()));
+                                                }
+                                            } else {
+                                                Toast.makeText(MapaActivity.this, "No se encontraron lugares", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
-                                    }else {
-                                        Toast.makeText(MapaActivity.this, "No se encontraron lugares", Toast.LENGTH_SHORT).show();
-                                    }
+                                    });
                                 }
                             };
                         }
